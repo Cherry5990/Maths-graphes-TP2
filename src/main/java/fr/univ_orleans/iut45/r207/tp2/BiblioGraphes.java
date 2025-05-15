@@ -86,4 +86,22 @@ public class BiblioGraphes {
         }
         return sousGraphe;
     }
+
+    public static Graph<String, DefaultEdge> grapheMoinsS(Graph<String, DefaultEdge> graph, Set<DefaultEdge> setAretes){
+        Graph<String, DefaultEdge> sousGraphe = new SimpleGraph<>(DefaultEdge.class);
+        Graphs.addGraph(sousGraphe, graph);
+        sousGraphe.removeAllEdges(setAretes);
+        return sousGraphe;
+    }
+
+    public static boolean chaineElementaire(List<String> chaine){
+        Set<String> sommets_vus = new HashSet<>();
+        for (String sommet : chaine){
+            if (sommets_vus.contains(sommet)){
+                return false;
+            }
+            sommets_vus.add(sommet);
+        }
+        return true;
+    }
 }
